@@ -20,3 +20,10 @@ This exists when you need a fast, deterministic, seedable PRNG with no native de
 - `j` and `k` must be integers with `0 < j < k`; otherwise a `RangeError` or `TypeError` is thrown.
 - `seed` must be a non-negative safe integer. A zero seed is allowed — the internal expander uses a non-zero constant so the state vector is non-degenerate.
 - `next()` returns integers in `[0, 2^31 - 1]`, not the full 32-bit range. This is deliberate: the top bit is discarded to keep the result non-negative and the low bits are discarded by the right-shift.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
