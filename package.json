@@ -1,6 +1,6 @@
 {
   "name": "lagged-fibonacci-generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Produces pseudorandom 32-bit integers using a lagged Fibonacci generator with configurable j and k lags.",
   "type": "module",
   "main": "src/index.js",
